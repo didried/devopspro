@@ -1,3 +1,7 @@
+"""
+Really coo CLI
+"""
+
 import argparse
 import os.path
 
@@ -5,12 +9,18 @@ import yaml
 
 
 def load_config(path):
+    """
+    :param: path to a config file
+    """
     with open(path, 'r') as conf_file:
         conf = yaml.safe_load(conf_file)
     return conf
 
 
 def build_parser():
+    """
+    build CLI parser
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-c', '--config', dest='config', action='store', type=str,
@@ -21,10 +31,16 @@ def build_parser():
 
 
 def business_logic(conf):
+    """
+    really important business logic
+    """
     print("Hello, {}!".format(conf.get('name', 'World')))
 
 
 def main():
+    """
+    the main thing
+    """
     parser = build_parser()
     params, other_params = parser.parse_known_args()
     conf = load_config(params.config)
